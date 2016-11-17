@@ -1,0 +1,5 @@
+#Wrote in scala due to issues with large graph processing in Python, particularly stacksizes and recursion
+
+# Build and run
+gradle clean build && java -jar ./build/libs/week4-task1.jar
+
