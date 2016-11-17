@@ -8,13 +8,16 @@ repositories{
 dependencies{
     compile 'org.slf4j:slf4j-api:1.7.5'
     compile "org.scala-lang:scala-library:2.12.0"
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.1.7'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
     testCompile "junit:junit:4.11"
+    
 }
 
 jar {
   manifest {
     attributes(
-      "Main-Class": "Algo"
+      "Main-Class": "tigran.Algo"
       )
   }
   from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
