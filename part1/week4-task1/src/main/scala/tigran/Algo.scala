@@ -2,6 +2,7 @@ package tigran
 
 import org.slf4j.LoggerFactory
 import org.slf4j.Logger
+import java.io.InputStream
 
 
 object Algo {
@@ -13,7 +14,17 @@ object Algo {
     }
    
    def run_task() {
-     
+     val scc_stream:InputStream = getClass.getClassLoader.getResourceAsStream("SCC.txt")
+     if (scc_stream == null) {
+       logger.error("scc_stream is null")
+     }
+     val graph_input = io.Source.fromInputStream(scc_stream).mkString
+     logger.info("File read")
+     var edges = get_edges(graph_input);
+     logger.debug("Edges: {} total", edges.length);
+     val graph1:Graph = new Graph(edges)
+     var answer1 = graph1.scc();
+     logger.info("scc completed. Result = {}", answer1);
    }
    
    def validate_answer(actual: String, expected: String) {

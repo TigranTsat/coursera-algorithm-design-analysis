@@ -112,9 +112,12 @@ class Graph {
     }
     seen_nodes(i) = true;
     leaders(i) = this.s;
-    for (node_to: Int <- adj_list(i)) {
+    var j:Int = 0
+    while(j < adj_list(i).length) {
+      val node_to = adj_list(i)(j);
       //      logger.debug("Processing node {} from node: {}", node_to + 1, i + 1);
       _dfs_scc(adj_list, node_to, do_times);
+      j += 1;
     }
     t += 1
     if (do_times) {
